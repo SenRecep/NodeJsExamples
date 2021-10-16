@@ -1,19 +1,21 @@
 const http = require('http');
-
+const PORT = 5050;
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
-        res.end('Hello Developer');
-        return;
-    }
-    if (req.url === '/about') {
-        res.end('Recep SEN');
+        res.end('Home Page');
         return;
     }
 
-    res.end(`
-    <h1>Ooops!</h1>
-    `);
+    if (req.url === '/about') {
+        res.end('About Page');
+        return;
+    }
+
+    res.end('Error Page');
+
 });
 
 
-server.listen(5050);
+server.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
